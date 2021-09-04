@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smartapps.cakemania">
+    package="com.smartapps.cakemaniaadmin">
    <application
         android:label="Cake Mania Admin"
         android:icon="@mipmap/ic_launcher">

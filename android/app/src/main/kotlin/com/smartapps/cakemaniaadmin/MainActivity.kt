@@ -1,4 +1,4 @@
-package com.smartapps.cakemania
+package com.smartapps.cakemaniaadmin
 
 import com.google.firebase.appcheck.FirebaseAppCheck;
 
