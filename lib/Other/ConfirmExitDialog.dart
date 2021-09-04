@@ -1,5 +1,5 @@
-import 'package:cake_mania/Materials.dart';
-import 'package:cake_mania/services/user_preferences.dart';
+import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/services/user_preferences.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmExit {

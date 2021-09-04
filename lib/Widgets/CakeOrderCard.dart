@@ -1,6 +1,6 @@
-import 'package:cake_mania/Materials.dart';
-import 'package:cake_mania/Models/CakeOrderModel.dart';
-import 'package:cake_mania/Notifiers/CakeOrderNotifier.dart';
+import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/Models/CakeOrderModel.dart';
+import 'package:cake_mania_admin/Notifiers/CakeOrderNotifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

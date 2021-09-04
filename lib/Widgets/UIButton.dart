@@ -1,4 +1,4 @@
-import 'package:cake_mania/Widgets/CustomButton.dart';
+import 'package:cake_mania_admin/Widgets/CustomButton.dart';
 import 'package:flutter/material.dart';
 
 class UILoginButton extends StatelessWidget {

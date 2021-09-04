@@ -1,13 +1,13 @@
-import 'dart:ui';
-import 'package:cake_mania/Materials.dart';
-import 'package:cake_mania/services/AuthenticationService.dart';
+                      import 'dart:ui';
+import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_mania/Designs/painter.dart';
-import 'package:cake_mania/Widgets/UIButton.dart';
-import 'package:cake_mania/Widgets/UIDialogBox.dart';
-import 'package:cake_mania/Designs/WaveClip.dart';
+import 'package:cake_mania_admin/Designs/painter.dart';
+import 'package:cake_mania_admin/Widgets/UIButton.dart';
+import 'package:cake_mania_admin/Widgets/UIDialogBox.dart';
+import 'package:cake_mania_admin/Designs/WaveClip.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,21 +1,22 @@
 import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/Models/CakeCardColor.dart';
 import 'package:cake_mania_admin/Models/CakeModel.dart';
-import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:simple_shadow/simple_shadow.dart';
 
-class CakeCard extends StatelessWidget {
-  final CakeModel cakeModel;
-
-  CakeCard({
-    required this.cakeModel,
+class SectionCard extends StatelessWidget {
+  final String title;
+  final CakeCardColor cardColor;
+  final List<CakeModel> cakeModels;
+  SectionCard({
+    required this.title,
+    required this.cardColor,
+    required this.cakeModels,
   });
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<LocalUser>(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: GestureDetector(
@@ -36,13 +37,13 @@ class CakeCard extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
             child: SizedBox(
-              height: 280.h,
+              height: 270.h,
               width: 200.w,
               child: Stack(
                 children: [
                   _cakeWithDetails(context),
                   // _addToFav(context),
-                  _addToBag(context)
+                  _addCake(context)
                 ],
               ),
             ),
@@ -52,7 +53,7 @@ class CakeCard extends StatelessWidget {
     );
   }
 
-  Widget _addToBag(BuildContext context) {
+  Widget _addCake(BuildContext context) {
     return GestureDetector(
       onTap: () {},
       child: Align(
@@ -70,7 +71,7 @@ class CakeCard extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: OverflowBox(
-        maxHeight: 250.h,
+        maxHeight: 260.h,
         minHeight: 200.h,
         maxWidth: 180.w,
         minWidth: 150.w,
@@ -78,36 +79,30 @@ class CakeCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
-              child: SizedBox(
-                height: double.infinity,
-                width: double.infinity,
-                child: Center(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    child: SimpleShadow(
-                      color: Colors.black87,
-                      offset: Offset(7, 8),
-                      sigma: 4,
-                      child: Center(
-                        child: ClipRect(
-                          child: Image.network(
-                            cakeModel.imageUrl,
-                            height: 150.h,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 10.h),
+            // Expanded(
+            //   child: SizedBox(
+            //     height: double.infinity,
+            //     width: double.infinity,
+            //     child: Center(
+            //       child: DecoratedBox(
+            //         decoration: BoxDecoration(
+            //             color: _cardColor(context),
+            //             borderRadius: BorderRadius.all(Radius.circular(20))),
+            //         child: SimpleShadow(
+            //           color: Colors.black87,
+            //           offset: Offset(7, 8),
+            //           sigma: 4,
+            //           child: Center(),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(height: 10.h),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                cakeModel.name,
+                title,
                 style: textStyle(
                     color: MyColorScheme.englishVermillion,
                     fontWeight: FontWeight.w500,
@@ -117,7 +112,7 @@ class CakeCard extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                '\u{20B9}${cakeModel.price}',
+                cakeModels.length.toString(),
                 style: textStyle(
                     color: MyColorScheme.englishVermillion,
                     fontWeight: FontWeight.w500,
@@ -129,4 +124,18 @@ class CakeCard extends StatelessWidget {
       ),
     );
   }
+
+  // Color _cardColor(BuildContext context) {
+  //   switch (cardColor) {
+  //     case CakeCardColor.corn:
+  //       return MyColorScheme.corn;
+  //     case CakeCardColor.englishVermillion:
+  //       return MyColorScheme.englishVermillion;
+  //     case CakeCardColor.terraCotta:
+  //       return MyColorScheme.terraCotta;
+  //     default:
+  //       return MyColorScheme.corn;
+  //   }
+  // }
+
 }

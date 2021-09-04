@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:cake_mania/Models/CakeOrderModel.dart';
-import 'package:cake_mania/Notifiers/CakeOrderNotifier.dart';
+import 'package:cake_mania_admin/Models/CakeOrderModel.dart';
+import 'package:cake_mania_admin/Notifiers/CakeOrderNotifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';

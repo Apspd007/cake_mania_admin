@@ -1,5 +1,5 @@
-import 'package:cake_mania/Models/CakeOrderModel.dart';
-import 'package:cake_mania/services/user_preferences.dart';
+import 'package:cake_mania_admin/Models/CakeOrderModel.dart';
+import 'package:cake_mania_admin/services/user_preferences.dart';
 import 'package:flutter/foundation.dart';
 
 class CakeOrderNotifier extends ChangeNotifier {

@@ -1,7 +1,7 @@
-import 'package:cake_mania/Models/CakeOrderModel.dart';
-import 'package:cake_mania/Models/OrderStatusEnums.dart';
-import 'package:cake_mania/Models/PaymentStatusEnums.dart';
-import 'package:cake_mania/services/AuthenticationService.dart';
+import 'package:cake_mania_admin/Models/CakeOrderModel.dart';
+import 'package:cake_mania_admin/Models/OrderStatusEnums.dart';
+import 'package:cake_mania_admin/Models/PaymentStatusEnums.dart';
+import 'package:cake_mania_admin/services/AuthenticationService.dart';
 
 class OrderBillModel {
   final List<CakeOrderModel> cakeOrderModel;

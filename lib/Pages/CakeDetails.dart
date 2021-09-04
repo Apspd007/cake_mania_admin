@@ -1,14 +1,13 @@
 import 'package:badges/badges.dart';
-import 'package:cake_mania/Materials.dart';
-import 'package:cake_mania/Models/CakeCardModel.dart';
-import 'package:cake_mania/Models/CakeOrderModel.dart';
-import 'package:cake_mania/Notifiers/CakeOrderNotifier.dart';
-import 'package:cake_mania/Pages/CheckoutPage.dart';
-import 'package:cake_mania/services/AuthenticationService.dart';
-import 'package:cake_mania/services/user_preferences.dart';
+import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/Models/CakeCardColor.dart';
+import 'package:cake_mania_admin/Models/CakeModel.dart';
+import 'package:cake_mania_admin/Models/CakeOrderModel.dart';
+import 'package:cake_mania_admin/Notifiers/CakeOrderNotifier.dart';
+import 'package:cake_mania_admin/services/AuthenticationService.dart';
+import 'package:cake_mania_admin/services/user_preferences.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -67,7 +66,7 @@ class _CakeDetailsState extends State<CakeDetails>
       print('no quantity');
     } else {
       _cakeOrderNotifier.add(CakeOrderModel(
-        cakeId: cakeModel.cakeId,
+        cakeId: cakeModel.cakeId ,
         flavor: _flavor!,
         name: cakeModel.name,
         price: cakeModel.price,
@@ -209,11 +208,7 @@ class _CakeDetailsState extends State<CakeDetails>
               ),
             ),
           ),
-          onTap: () {
-            Get.to(() => CheckoutPage(
-                  user: widget.user,
-                ));
-          },
+          onTap: () {},
         ),
       ],
     );
@@ -294,8 +289,7 @@ class _CakeDetailsState extends State<CakeDetails>
                         children: [
                           Text(widget.cakeModel.name,
                               style: textStyle(color: Colors.black87)),
-                          Text(
-                              '\u{20B9}${widget.cakeModel.price.round().toString()}',
+                          Text('\u{20B9}${widget.cakeModel.price}',
                               style: textStyle(color: Colors.black87)),
                           SizedBox(height: 20.h),
                           _flavorAndQuantity(),
@@ -466,7 +460,7 @@ class _CakeDetailsState extends State<CakeDetails>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(widget.cakeModel.name, style: textStyle(color: Colors.black87)),
-        Text('\u{20B9}${widget.cakeModel.price.round().toString()}',
+        Text('\u{20B9}${widget.cakeModel.price}',
             style: textStyle(color: Colors.black87)),
         SizedBox(height: 20.h),
         Text('Ingredients', style: textStyle(color: Colors.black87)),

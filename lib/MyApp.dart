@@ -1,10 +1,9 @@
-import 'package:cake_mania/Materials.dart';
-import 'package:cake_mania/Pages/HomePage.dart';
-import 'package:cake_mania/Pages/Loginpage.dart';
-import 'package:cake_mania/services/AuthenticationService.dart';
+import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/Pages/HomePage.dart';
+import 'package:cake_mania_admin/Pages/Loginpage.dart';
+import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,8 +12,8 @@ class MyApp extends StatelessWidget {
     final _auth = Provider.of<AuthBase>(context);
     return ScreenUtilInit(
       designSize: Size(414, 736),
-      builder: () => GetMaterialApp(
-        title: 'Bakery',
+      builder: () => MaterialApp(
+        title: 'Cake Mania Admin',
         theme: themeData(),
         home: Scaffold(
           body: SafeArea(

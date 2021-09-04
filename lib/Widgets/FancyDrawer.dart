@@ -1,7 +1,8 @@
-import 'package:cake_mania/Materials.dart';
-import 'package:cake_mania/Pages/Favorites.dart';
-import 'package:cake_mania/services/AuthenticationService.dart';
-import 'package:cake_mania/services/user_preferences.dart';
+import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/Pages/AddCake.dart';
+import 'package:cake_mania_admin/Pages/CreateSection.dart';
+import 'package:cake_mania_admin/services/AuthenticationService.dart';
+import 'package:cake_mania_admin/services/user_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,6 @@ class _FancyDrawerState extends State<FancyDrawer>
   late AnimationController _controller;
   late Animation<double> _falling;
   late Animation<double> _changeInHeight;
-  // late Animation<double> _changeInWidth;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _FancyDrawerState extends State<FancyDrawer>
   @override
   Widget build(BuildContext context) {
     final _auth = Provider.of<AuthBase>(context);
-    final user = Provider.of<LocalUser>(context);
+    // final user = Provider.of<LocalUser>(context);
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(20),
@@ -57,12 +57,22 @@ class _FancyDrawerState extends State<FancyDrawer>
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // _animation(
-          //     title: 'Favourites',
-          //     onTab: () {
-          //       Get.to(() => FavoritePage(user: user));
-          //     }),
-          // SizedBox(height: 20),
+          _animation(
+              title: 'Add Cake',
+              onTab: () {
+                Navigator.pop(context);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => AddCake()));
+              }),
+          SizedBox(height: 20),
+          _animation(
+              title: 'Create Sections',
+              onTab: () {
+                Navigator.pop(context);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => CreateSection()));
+              }),
+          SizedBox(height: 20),
           _animation(
               title: 'Sign Out',
               onTab: () {
