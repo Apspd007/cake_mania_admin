@@ -1,4 +1,4 @@
-# cake_mania
+# cake_mania_admin
 
 A new Flutter project.
 
