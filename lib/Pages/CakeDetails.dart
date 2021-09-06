@@ -66,7 +66,8 @@ class _CakeDetailsState extends State<CakeDetails>
       print('no quantity');
     } else {
       _cakeOrderNotifier.add(CakeOrderModel(
-        cakeId: cakeModel.cakeId ,
+        cakeId: cakeModel.cakeId,
+        imageUrl: cakeModel.imageUrl,
         flavor: _flavor!,
         name: cakeModel.name,
         price: cakeModel.price,

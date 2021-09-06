@@ -1,6 +1,7 @@
 import 'package:cake_mania_admin/Materials.dart';
 import 'package:cake_mania_admin/Pages/AddCake.dart';
 import 'package:cake_mania_admin/Pages/CreateSection.dart';
+import 'package:cake_mania_admin/Pages/TrackingOrders.dart';
 import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:cake_mania_admin/services/user_preferences.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,7 +53,7 @@ class _FancyDrawerState extends State<FancyDrawer>
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(20),
-      color: MyColorScheme.mauvelous,
+      color: MyColorScheme.brinkPink,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,6 +72,14 @@ class _FancyDrawerState extends State<FancyDrawer>
                 Navigator.pop(context);
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (_) => CreateSection()));
+              }),
+          SizedBox(height: 20),
+          _animation(
+              title: 'Orders',
+              onTab: () {
+                Navigator.of(context).pop();
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => TrackingOrders()));
               }),
           SizedBox(height: 20),
           _animation(

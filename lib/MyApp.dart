@@ -1,5 +1,6 @@
 import 'package:cake_mania_admin/Materials.dart';
 import 'package:cake_mania_admin/Pages/HomePage.dart';
+import 'package:cake_mania_admin/Pages/InitPage.dart';
 import 'package:cake_mania_admin/Pages/Loginpage.dart';
 import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
                                 displayImage: _user.displayImage,
                                 emailVerified: _user.emailVerified,
                               ),
-                          child: HomePage());
+                          child: InitPage());
                     } else {
                       return Center(child: CircularProgressIndicator());
                     }

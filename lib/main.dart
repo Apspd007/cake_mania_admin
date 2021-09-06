@@ -1,6 +1,7 @@
 import 'package:cake_mania_admin/MyApp.dart';
 import 'package:cake_mania_admin/Notifiers/CakeNotifier.dart';
 import 'package:cake_mania_admin/Notifiers/CakeOrderNotifier.dart';
+import 'package:cake_mania_admin/Notifiers/OrderBillNotifier.dart';
 import 'package:cake_mania_admin/Notifiers/SectionNotifier.dart';
 import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:cake_mania_admin/services/FirestoreDatabase.dart';
@@ -24,6 +25,7 @@ class RootApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => CakeOrderNotifier(), lazy: false),
         ChangeNotifierProvider(create: (_) => SectionModelNotifier()),
+        ChangeNotifierProvider(create: (_) => OrderBillNotifier()),
         ChangeNotifierProvider(create: (_) => CakeNotifier()),
         Provider<AuthBase>(create: (context) => Auth()),
         Provider<Database>(create: (context) => MyFirestoreDatabse()),

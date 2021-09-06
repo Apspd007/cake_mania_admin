@@ -1,16 +1,21 @@
 import 'package:cake_mania_admin/Materials.dart';
+import 'package:cake_mania_admin/Models/CakeCardColor.dart';
 import 'package:cake_mania_admin/Models/CakeModel.dart';
+import 'package:cake_mania_admin/Pages/CakeDetails.dart';
 import 'package:cake_mania_admin/services/AuthenticationService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class CakeCard extends StatelessWidget {
   final CakeModel cakeModel;
+  final CakeCardColor? cardColor;
 
   CakeCard({
     required this.cakeModel,
+    this.cardColor,
   });
 
   @override
@@ -19,7 +24,13 @@ class CakeCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Get.to(() => CakeDetails(
+                cakeModel: cakeModel,
+                user: user,
+                cardColor: cardColor ?? CakeCardColor.corn,
+              ));
+        },
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -36,7 +47,7 @@ class CakeCard extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
             child: SizedBox(
-              height: 280.h,
+              height: 270.h,
               width: 200.w,
               child: Stack(
                 children: [
@@ -50,6 +61,19 @@ class CakeCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color _cardColor() {
+    switch (cardColor) {
+      case CakeCardColor.corn:
+        return MyColorScheme.corn;
+      case CakeCardColor.englishVermillion:
+        return MyColorScheme.englishVermillion;
+      case CakeCardColor.terraCotta:
+        return MyColorScheme.terraCotta;
+      default:
+        return MyColorScheme.corn;
+    }
   }
 
   Widget _addToBag(BuildContext context) {
@@ -66,11 +90,63 @@ class CakeCard extends StatelessWidget {
     );
   }
 
+  // Widget _addToFav(BuildContext context) {
+  //   final _user = Provider.of<LocalUser>(context);
+  //   final _database = Provider.of<Database>(context);
+  //   return StreamBuilder<DocumentSnapshot<Object?>>(
+  //       stream: _database.getUserDataAsStream(_user.uid),
+  //       builder: (context, snapshot) {
+  //         if (snapshot.hasData) {
+  //           final UserData data =
+  //               UserData.userDataFromJson(snapshot.data!.data());
+  //           return data.favourites.contains(cakeModel.cakeId)
+  //               ? GestureDetector(
+  //                   onTap: () {
+  //                     _database.removeFromFavourite(
+  //                         _user.uid, cakeModel.cakeId);
+  //                   },
+  //                   child: Align(
+  //                     alignment: Alignment.topRight,
+  //                     child: Icon(
+  //                       Icons.favorite,
+  //                       size: 33.r,
+  //                       color: _iconColor(context),
+  //                     ),
+  //                   ),
+  //                 )
+  //               : GestureDetector(
+  //                   onTap: () {
+  //                     _database.addToFavourite(_user.uid, cakeModel.cakeId);
+  //                   },
+  //                   child: Align(
+  //                     alignment: Alignment.topRight,
+  //                     child: Icon(
+  //                       Icons.favorite_border_outlined,
+  //                       size: 33.r,
+  //                       color: _iconColor(context),
+  //                     ),
+  //                   ),
+  //                 );
+  //         } else if (snapshot.hasError) {
+  //           return Center(child: Text(snapshot.error.toString()));
+  //         } else {
+  //           return Align(
+  //             alignment: Alignment.topRight,
+  //             child: Icon(
+  //               Icons.favorite_border_outlined,
+  //               size: 33.r,
+  //               color: _iconColor(context),
+  //             ),
+  //           );
+  //         }
+  //       });
+  // }
+
   Align _cakeWithDetails(BuildContext context) {
     return Align(
       alignment: Alignment.center,
       child: OverflowBox(
-        maxHeight: 250.h,
+        maxHeight: 260.h,
         minHeight: 200.h,
         maxWidth: 180.w,
         minWidth: 150.w,
@@ -85,6 +161,7 @@ class CakeCard extends StatelessWidget {
                 child: Center(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
+                        color: _cardColor(),
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: SimpleShadow(
                       color: Colors.black87,
@@ -92,9 +169,12 @@ class CakeCard extends StatelessWidget {
                       sigma: 4,
                       child: Center(
                         child: ClipRect(
-                          child: Image.network(
-                            cakeModel.imageUrl,
-                            height: 150.h,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Image.network(
+                              cakeModel.imageUrl,
+                              height: 150.h,
+                            ),
                           ),
                         ),
                       ),
@@ -117,7 +197,7 @@ class CakeCard extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                '\u{20B9}${cakeModel.price}',
+                '\u{20B9}${cakeModel.price.round().toString()}',
                 style: textStyle(
                     color: MyColorScheme.englishVermillion,
                     fontWeight: FontWeight.w500,

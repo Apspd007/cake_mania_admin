@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:cake_mania_admin/Materials.dart';
 import 'package:cake_mania_admin/Models/CakeModel.dart';
 import 'package:cake_mania_admin/Models/SectionModel.dart';
-import 'package:cake_mania_admin/Notifiers/CakeNotifier.dart';
 import 'package:cake_mania_admin/Notifiers/SectionNotifier.dart';
 import 'package:cake_mania_admin/Other/ConfirmExitDialog.dart';
 import 'package:cake_mania_admin/Widgets/CakeCard.dart';
@@ -119,6 +116,7 @@ class HomePage extends StatelessWidget {
 
   Widget _cakes(String title, BuildContext context) {
     final database = Provider.of<Database>(context);
+    // database.getOrders();
     return StreamBuilder<DocumentSnapshot<Object?>>(
       stream: database.getAllCakes(),
       builder: (BuildContext context,
@@ -127,8 +125,9 @@ class HomePage extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.active) {
             final json = snapshot.data!.data() as Map<String, dynamic>;
             final data = CakeModel.jsonToCakeModelList(json["cakeList"]);
-            final cakeCards = CakeModel.cakeModelListToCakeCardList(data);
-            print(cakeCards);
+            final cakeCards = CakeModel.cakeModelListToCakeCardList(
+              data,
+            );
             return _child(title, cakeCards);
           } else {
             return Center();

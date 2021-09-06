@@ -16,6 +16,11 @@ class LocalUser {
     required this.email,
     this.emailVerified,
   });
+
+  static List<LocalUser> jsonToLocalUserList(json) {
+    return List<LocalUser>.from(json.map((value) => LocalUser.fromJson(value)));
+  }
+
   factory LocalUser.fromJson(json) => LocalUser(
         uid: json["uid"],
         displayName: json["displayName"],
@@ -54,13 +59,13 @@ class Auth implements AuthBase {
 
   LocalUser? _userFromFirebase(User? _user) {
     if (_user != null) {
-    return LocalUser(
-      uid: _user.uid,
-      displayImage: _user.photoURL!,
-      displayName: _user.displayName!,
-      email: _user.email!,
-      emailVerified: _user.emailVerified,
-    );
+      return LocalUser(
+        uid: _user.uid,
+        displayImage: _user.photoURL!,
+        displayName: _user.displayName!,
+        email: _user.email!,
+        emailVerified: _user.emailVerified,
+      );
     } else
       return null;
   }

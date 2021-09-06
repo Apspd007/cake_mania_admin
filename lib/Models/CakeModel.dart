@@ -1,3 +1,4 @@
+import 'package:cake_mania_admin/Models/CakeCardColor.dart';
 import 'package:cake_mania_admin/Models/IngredientModel.dart';
 import 'package:cake_mania_admin/Widgets/CakeCard.dart';
 
@@ -47,8 +48,9 @@ class CakeModel {
   }
 
   static List<CakeCard> cakeModelListToCakeCardList(
-      List<CakeModel> cakemodels) {
+      List<CakeModel> cakemodels ) {
     final list = List<CakeCard>.from(cakemodels.map((x) => CakeCard(
+        // cardColor: cardColor,
         cakeModel: CakeModel(
             cakeId: x.cakeId,
             name: x.name,
